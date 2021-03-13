@@ -11,11 +11,33 @@ function createDeck() {
   return cards
 }
 
-function testDeck() {
-  const d = createDeck()
+function shuffleDeck(d) {
+  const cards = [...d]
+  const shuffled = []
+  while (cards.length) {
+    const n = Math.floor(
+      Math.random() * cards.length)
+    shuffled.push(cards[n])
+    cards.splice(n, 1)
+  }
+  return shuffled
+}
+
+function printDeck(d) {
   console.log(`deck has ${d.length} cards`)
   for (let c of d)
     console.log(`${c.value}${c.suit}`)
 }
 
-testDeck()
+function testDeck() {
+  const d = deck()
+  printDeck(d)
+}
+
+function testShuffle() {
+  const d = createDeck()
+  const d2 = shuffleDeck(d)
+  printDeck(d2)
+}
+
+testShuffle()
