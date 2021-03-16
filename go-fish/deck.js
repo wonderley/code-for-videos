@@ -3,7 +3,7 @@ function createDeck() {
   const cards = []
   for (let suit of ['♥️', '♣️', '♦️', '♠️']) {
     for (let value of [
-      2,3,4,5,6,7,8,9,10,'J','Q','K','A'
+      '2','3','4','5','6','7','8','9','10','J','Q','K','A'
     ]) {
       cards.push({suit, value})
     }
@@ -13,8 +13,8 @@ function createDeck() {
 
 function cardToString(c) {
   let asString = `${c.value}${c.suit}`
-  if (asString.length === 2) {
-    // Pad to make all cards three characters
+  if (c.value.length === 1) {
+    // Pad to make all values take up two spaces
     asString = ' ' + asString
   }
   return asString
