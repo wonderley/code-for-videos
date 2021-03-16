@@ -22,15 +22,8 @@ function cardToString(c) {
 
 function printDeck(d) {
   console.log(`deck has ${d.length} cards`)
-  // print in five columns
-  let row = []
-  for (let i = 0; i < d.length; i++) {
-    row.push(cardToString(d[i]))
-    if (i % 5 === 4) {
-      console.log(row.join(' '))
-      row = []
-    }
-  }
+  for (let c of d)
+    console.log(`${c.value}${c.suit}`)
 }
 
 function testShuffle() {
