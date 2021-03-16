@@ -11,15 +11,6 @@ function createDeck() {
   return cards
 }
 
-function cardToString(c) {
-  let asString = `${c.value}${c.suit}`
-  if (c.value.length === 1) {
-    // Pad to make all values take up two spaces
-    asString = ' ' + asString
-  }
-  return asString
-}
-
 function printDeck(d) {
   console.log(`deck has ${d.length} cards`)
   // print in five columns
@@ -31,6 +22,15 @@ function printDeck(d) {
       row = []
     }
   }
+}
+
+function cardToString(c) {
+  let asString = `${c.value}${c.suit}`
+  if (asString.length === 2) {
+    // Pad to make all values take up two spaces
+    asString = ' ' + asString
+  }
+  return asString
 }
 
 function testShuffle() {
