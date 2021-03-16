@@ -13,10 +13,10 @@ function createDeck() {
 
 function printDeck(d) {
   console.log(`deck has ${d.length} cards`)
-  // print in five columns
+  // Print in five columns
   let row = []
   for (let i = 0; i < d.length; i++) {
-    row.push(cardToString(d[i]))
+    row.push(`${d[i].value}${d[i].suit}`)
     if (i % 5 === 4) {
       console.log(row.join(' '))
       row = []
