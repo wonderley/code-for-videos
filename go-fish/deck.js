@@ -11,6 +11,17 @@ function createDeck() {
   return cards
 }
 
+function printDeck(d) {
+  console.log(`deck has ${d.length} cards`)
+  for (let c of d)
+    console.log(`${c.value}${c.suit}`)
+}
+
+function testDeck() {
+  const d = deck()
+  printDeck(d)
+}
+
 function shuffleDeck(d) {
   const cards = [...d]
   const shuffled = []
@@ -21,17 +32,6 @@ function shuffleDeck(d) {
     cards.splice(n, 1)
   }
   return shuffled
-}
-
-function printDeck(d) {
-  console.log(`deck has ${d.length} cards`)
-  for (let c of d)
-    console.log(`${c.value}${c.suit}`)
-}
-
-function testDeck() {
-  const d = deck()
-  printDeck(d)
 }
 
 function testShuffle() {
