@@ -11,10 +11,32 @@ function createDeck() {
   return cards
 }
 
+function cardToString(c) {
+  let asString = `${c.value}${c.suit}`
+  if (asString.length === 2) {
+    // Pad to make all cards three characters
+    asString = ' ' + asString
+  }
+  return asString
+}
+
 function printDeck(d) {
   console.log(`deck has ${d.length} cards`)
-  for (let c of d)
-    console.log(`${c.value}${c.suit}`)
+  // print in five columns
+  let row = []
+  for (let i = 0; i < d.length; i++) {
+    row.push(cardToString(d[i]))
+    if (i % 5 === 4) {
+      console.log(row.join(' '))
+      row = []
+    }
+  }
+}
+
+function testShuffle() {
+  const d = createDeck()
+  const d2 = shuffleDeck(d)
+  printDeck(d2)
 }
 
 function testDeck() {
