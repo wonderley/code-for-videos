@@ -16,7 +16,7 @@ function printDeck(d) {
   // Print in five columns
   let row = []
   for (let i = 0; i < d.length; i++) {
-    row.push(`${d[i].value}${d[i].suit}`)
+    row.push(cardToString(d[i]))
     if (i % 5 === 4) {
       console.log(row.join(' '))
       row = []
