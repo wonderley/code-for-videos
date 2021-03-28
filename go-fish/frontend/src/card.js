@@ -12,6 +12,7 @@ export default function Card (
       backgroundColor: 'white',
       borderRadius: '5px',
       display: 'flex',
+      margin: 5,
       color: suitColor,
     }}>
       <span style={{

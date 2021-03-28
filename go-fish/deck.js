@@ -3,7 +3,8 @@ function createDeck() {
   const cards = []
   for (let suit of ['♥️', '♣️', '♦️', '♠️']) {
     for (let value of [
-      '2','3','4','5','6','7','8','9','10','J','Q','K','A'
+      '2','3','4','5','6','7','8',
+      '9','10','J','Q','K','A'
     ]) {
       cards.push({suit, value})
     }
