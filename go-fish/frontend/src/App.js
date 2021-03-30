@@ -9,25 +9,40 @@ import {
 function App() {
   const unshuffledDeck = createDeck()
   const deck = shuffleDeck(unshuffledDeck)
-  const hands = [[], [], []]
-  // Deal five cards to three players
-  for (let i = 0; i < 3*5; i++) {
+  const numPlayers = 3
+  const numCards = 5
+  const handContent = []
+  for (let i = 0; i < numPlayers; i++)
+    handContent.push([])
+  for (let i = 0;
+  i < numPlayers*numCards;
+  i++) {
     const cardProps = deck.pop()
-    hands[i % 3].push(
+    handContent[i % numPlayers].push(
       <Card {...cardProps} />
+    )
+  }
+  const hands = []
+  for (let i = 0;
+  i < handContent.length;
+  i++) {
+    hands.push(
+      <Hand name={`Player ${i+1}`}>
+        {handContent[i]}
+      </Hand>
     )
   }
   return (
     <div className='App'>
       <header className='App-header'>
-        <Hand name='Player 1'>
-          {hands[0]}
+        <Hand name={`Player ${1}`}>
+          {handContent[0]}
         </Hand>
-        <Hand name='Player 2'>
-          {hands[1]}
+        <Hand name={`Player ${2}`}>
+          {handContent[1]}
         </Hand>
-        <Hand name='Player 3'>
-          {hands[2]}
+        <Hand name={`Player ${3}`}>
+          {handContent[2]}
         </Hand>
       </header>
     </div>
