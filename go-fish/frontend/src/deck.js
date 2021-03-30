@@ -1,5 +1,5 @@
 
-function createDeck() {
+export function createDeck() {
   const cards = []
   for (let suit of ['♥️', '♣️', '♦️', '♠️']) {
     for (let value of [
@@ -41,11 +41,11 @@ function testShuffle() {
 }
 
 function testDeck() {
-  const d = deck()
+  const d = createDeck()
   printDeck(d)
 }
 
-function shuffleDeck(d) {
+export function shuffleDeck(d) {
   const cards = [...d]
   const shuffled = []
   while (cards.length) {
@@ -56,11 +56,3 @@ function shuffleDeck(d) {
   }
   return shuffled
 }
-
-function testShuffle() {
-  const d = createDeck()
-  const d2 = shuffleDeck(d)
-  printDeck(d2)
-}
-
-testShuffle()
