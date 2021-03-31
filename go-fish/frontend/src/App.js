@@ -10,7 +10,7 @@ function App() {
   const unshuffledDeck = createDeck()
   const deck = shuffleDeck(unshuffledDeck)
   const numPlayers = 3
-  const numCards = 10
+  const numCards = 5
   const handContent = []
   for (let i = 0; i < numPlayers; i++)
     handContent.push([])
@@ -35,7 +35,15 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        {hands}
+        <Hand name={`Player ${1}`}>
+          {handContent[0]}
+        </Hand>
+        <Hand name={`Player ${2}`}>
+          {handContent[1]}
+        </Hand>
+        <Hand name={`Player ${3}`}>
+          {handContent[2]}
+        </Hand>
       </header>
     </div>
   )
