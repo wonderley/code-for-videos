@@ -10,28 +10,27 @@ function App() {
   const unshuffledDeck = createDeck()
   const deck = shuffleDeck(unshuffledDeck)
   const numPlayers = 3
-  const numCards = 10
-  const handContent = []
+  const numCards = 5
+  const handData = []
   for (let i = 0; i < numPlayers; i++)
-    handContent.push([])
+    handData.push([])
   for (let i = 0;
   i < numPlayers*numCards;
   i++) {
     const cardProps = deck.pop()
-    handContent[i % numPlayers].push(
-      <Card {...cardProps} />
-    )
+    handData[i % numPlayers].push(cardProps)
   }
-  const hands = []
-  for (let i = 0;
-  i < handContent.length;
-  i++) {
-    hands.push(
+  const handContent =
+    handData.map(
+      h => h.map(
+        c => <Card {...c} />
+    ))
+  const hands =
+    handContent.map((content, i) => (
       <Hand name={`Player ${i+1}`}>
-        {handContent[i]}
+        {content}
       </Hand>
-    )
-  }
+    ))
   return (
     <div className='App'>
       <header className='App-header'>
