@@ -6,11 +6,16 @@ import {
   shuffleDeck,
 } from './deck'
 
-function App() {
+export default function App() {
   const unshuffledDeck = createDeck()
   const deck = shuffleDeck(unshuffledDeck)
   const numPlayers = 3
   const numCards = 5
+  const handData = deal(deck, numPlayers, numCards)
+  return <Table handData={handData} />
+}
+
+function deal(deck, numPlayers, numCards) {
   const handData = []
   for (let i = 0; i < numPlayers; i++)
     handData.push([])
@@ -20,6 +25,10 @@ function App() {
     const cardProps = deck.pop()
     handData[i % numPlayers].push(cardProps)
   }
+  return handData
+}
+
+function Table({ handData }) {
   const handContent =
     handData.map(
       h => h.map(
@@ -39,5 +48,3 @@ function App() {
     </div>
   )
 }
-
-export default App
