@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css'
 import Card from './card'
 import Hand from './hand'
@@ -11,14 +12,28 @@ export default function App() {
   const deck = shuffleDeck(unshuffledDeck)
   const numPlayers = 3
   const numCards = 5
-  const handData = deal(deck, numPlayers, numCards)
+  const initialHandData =
+    deal(deck, numPlayers, numCards)
+  const [handData, setHandData] =
+    useState(initialHandData)
   return (
     <div className='App'>
       <header className='App-header'>
-      <Table handData={handData} />
+        <button onClick={() => {
+          dealCard(deck, handData, 0)
+          setHandData([...handData])
+        }}>
+          Deal to Player 1
+        </button>
+        <Table handData={handData} />
       </header>
     </div>
   )
+}
+
+function dealCard(deck, handData, playerIdx) {
+  const cardProps = deck.pop()
+  handData[playerIdx].push(cardProps)
 }
 
 function deal(deck, numPlayers, numCards) {
@@ -28,8 +43,7 @@ function deal(deck, numPlayers, numCards) {
   for (let i = 0;
   i < numPlayers*numCards;
   i++) {
-    const cardProps = deck.pop()
-    handData[i % numPlayers].push(cardProps)
+    dealCard(deck, handData, i % numPlayers)
   }
   return handData
 }
