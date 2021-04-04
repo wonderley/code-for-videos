@@ -12,7 +12,13 @@ export default function App() {
   const numPlayers = 3
   const numCards = 5
   const handData = deal(deck, numPlayers, numCards)
-  return <Table handData={handData} />
+  return (
+    <div className='App'>
+      <header className='App-header'>
+      <Table handData={handData} />
+      </header>
+    </div>
+  )
 }
 
 function deal(deck, numPlayers, numCards) {
@@ -40,11 +46,5 @@ function Table({ handData }) {
         {content}
       </Hand>
     ))
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        {hands}
-      </header>
-    </div>
-  )
+  return hands
 }
