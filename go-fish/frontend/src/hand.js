@@ -6,6 +6,7 @@ export default function Hand(
       width: '100%',
       padding: 20,
       boxSizing: 'border-box',
+      border: '3px solid white',
     }}>
       <span style={{
         color: 'white',
