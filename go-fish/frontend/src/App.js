@@ -16,6 +16,8 @@ export default function App() {
     deal(deck, numPlayers, numCards)
   const [handData, setHandData] =
     useState(initialHandData)
+  const [playerTurn] =
+    useState(0)
   return (
     <div className='App'>
       <header className='App-header'>
@@ -25,7 +27,10 @@ export default function App() {
         }}>
           Deal to Player 1
         </button>
-        <Table handData={handData} />
+        <Table
+          handData={handData}
+          playerTurn={playerTurn}
+        />
       </header>
     </div>
   )
@@ -48,7 +53,10 @@ function deal(deck, numPlayers, numCards) {
   return handData
 }
 
-function Table({ handData }) {
+function Table({
+  handData,
+  playerTurn
+}) {
   const handContent =
     handData.map(
       h => h.map(
@@ -56,7 +64,10 @@ function Table({ handData }) {
     ))
   const hands =
     handContent.map((content, i) => (
-      <Hand name={`Player ${i+1}`}>
+      <Hand
+        name={`Player ${i+1}`}
+        isPlayerTurn={playerTurn === i}
+      >
         {content}
       </Hand>
     ))

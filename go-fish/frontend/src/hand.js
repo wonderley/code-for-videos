@@ -1,12 +1,14 @@
 export default function Hand(
-  { children, name }
+  { children, name, isPlayerTurn }
 ) {
   return (
     <div style={{
       width: '100%',
       padding: 20,
       boxSizing: 'border-box',
-      border: '3px solid white',
+      border: isPlayerTurn ?
+        '3px solid white' :
+        undefined,
     }}>
       <span style={{
         color: 'white',
