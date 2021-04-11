@@ -6,6 +6,8 @@ export default function Card (
   const suitColor =
     ['♥️', '♦️'].includes(suit)
     ? 'red' : 'black'
+  const cardText =
+    isShown ? `${value}${suit}` : '🐟'
   return (
     <div style={{
       width: '64px',
@@ -19,7 +21,7 @@ export default function Card (
     }}>
       <span style={{
         margin: 'auto',
-      }}>{`${value}${suit}`}</span>
+      }}>{cardText}</span>
     </div>
   )
 }
