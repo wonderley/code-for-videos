@@ -1,8 +1,7 @@
 
 export default function Card (
-  { value, suit }
+  { value, suit, isShown }
 ) {
-  const isShown = false
   const suitColor =
     ['♥️', '♦️'].includes(suit)
     ? 'red' : 'black'

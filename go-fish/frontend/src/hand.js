@@ -1,6 +1,19 @@
+import Card from './card'
+
 export default function Hand(
-  { children, name, isPlayerTurn }
+  {
+    name,
+    isPlayerTurn,
+    showCards,
+    cardData
+  }
 ) {
+  const content = cardData.map(
+    c => <Card
+      isShown={showCards}
+      {...c}
+    />
+  )
   return (
     <div style={{
       width: '100%',
@@ -25,7 +38,7 @@ export default function Hand(
         justifyItems: 'center',
         justifyContent: 'center',
       }}>
-        {children}
+        {content}
       </div>
     </div>
   )

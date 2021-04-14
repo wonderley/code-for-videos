@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './App.css'
-import Card from './card'
 import Hand from './hand'
 import {
   createDeck,
@@ -57,19 +56,13 @@ function Table({
   handData,
   playerTurn
 }) {
-  const handContent =
-    handData.map(
-      h => h.map(
-        c => <Card {...c} />
-    ))
-  const hands =
-    handContent.map((content, i) => (
-      <Hand
-        name={`Player ${i+1}`}
-        isPlayerTurn={playerTurn === i}
-      >
-        {content}
-      </Hand>
-    ))
-  return hands
+  return handData.map(
+    (cardData, i) => (
+    <Hand
+      name={`Player ${i+1}`}
+      isPlayerTurn={playerTurn === i}
+      showCards={i === 0}
+      cardData={cardData}
+    />
+  ))
 }
