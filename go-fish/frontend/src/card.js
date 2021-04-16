@@ -1,12 +1,17 @@
 
 export default function Card (
-  { value, suit, isShown }
+  { value, suit, isShown, isSelected }
 ) {
   const suitColor =
     ['♥️', '♦️'].includes(suit)
     ? 'red' : 'black'
   const cardText =
     isShown ? `${value}${suit}` : '🐟'
+  const borderStyle =
+    isSelected ? {
+      border: '8px solid orange',
+      boxSizing: 'border-box',
+    } : undefined
   return (
     <div style={{
       width: '64px',
@@ -17,6 +22,7 @@ export default function Card (
       display: 'flex',
       margin: 5,
       color: suitColor,
+      ...borderStyle
     }}>
       <span style={{
         margin: 'auto',
