@@ -20,12 +20,6 @@ export default function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <button onClick={() => {
-          dealCard(deck, handData, 0)
-          setHandData([...handData])
-        }}>
-          Deal to Player 1
-        </button>
         <Table
           handData={handData}
           playerTurn={playerTurn}
