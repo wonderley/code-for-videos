@@ -13,7 +13,7 @@ export default function App() {
   const numCards = 5
   const initialHandData =
     deal(deck, numPlayers, numCards)
-  const [handData, setHandData] =
+  const [handData] =
     useState(initialHandData)
   const [playerTurn] =
     useState(0)

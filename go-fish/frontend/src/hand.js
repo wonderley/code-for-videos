@@ -11,7 +11,6 @@ export default function Hand(
   const content = cardData.map(
     (c, i) => <Card
       isShown={showCards}
-      isSelected={i%2 === 0}
       {...c}
     />
   )
