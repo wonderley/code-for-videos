@@ -5,12 +5,21 @@ export default function Hand(
     name,
     isPlayerTurn,
     showCards,
-    cardData
+    cardData,
+    playerIdx,
+    selectedCardIdx,
+    onCardSelected,
   }
 ) {
   const content = cardData.map(
     (c, i) => <Card
       isShown={showCards}
+      playerIdx={playerIdx}
+      cardIdx={i}
+      onCardSelected={() => {
+        onCardSelected(i)
+      }}
+      isSelected={i === selectedCardIdx}
       {...c}
     />
   )
