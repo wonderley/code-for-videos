@@ -53,23 +53,23 @@ function Table({
   const [selectedCard, setSelectedCard]
     = useState(undefined)
   return handData.map(
-    (cardData, i) => (
-    <Hand
-      name={`Player ${i+1}`}
-      isPlayerTurn={playerTurn === i}
-      showCards={i === 0}
-      cardData={cardData}
-      selectedCardIdx={
-        selectedCard &&
-        selectedCard.playerIdx === i &&
-        selectedCard.cardIdx
-      }
-      onCardSelected={(cardIdx) => {
-        setSelectedCard({
-          playerIdx: i,
-          cardIdx,
-        })
-      }}
-    />
-  ))
+    (cardData, i) => {
+      return <Hand
+        name={`Player ${i+1}`}
+        isPlayerTurn={playerTurn === i}
+        showCards={i === 0}
+        cardData={cardData}
+        selectedCardIdx={
+          selectedCard &&
+          selectedCard.playerIdx === i &&
+          selectedCard.cardIdx
+        }
+        onCardSelected={(cardIdx) => {
+          setSelectedCard({
+            playerIdx: i,
+            cardIdx,
+          })
+        }}
+      />
+    })
 }
