@@ -74,6 +74,7 @@ function Table({
             cardIdx,
           })
         }}
+        isHandSelected={i === selectedHand}
         onHandSelected={() => {
           if (isPlayerTurn) return
           setSelectedHand(i)
