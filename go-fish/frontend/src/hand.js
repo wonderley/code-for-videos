@@ -28,13 +28,16 @@ export default function Hand(
       width: '100%',
       padding: 20,
       boxSizing: 'border-box',
-      border: isPlayerTurn ?
-        '3px solid white' :
-        undefined,
+      // border: isPlayerTurn ?
+      //   '3px solid white' :
+      //   undefined,
     }}>
       <span style={{
         color: 'white',
         fontWeight: 'bold',
+        textDecoration: isPlayerTurn ?
+          'underline' :
+          undefined,
       }}>
         {name || ''}
       </span>
