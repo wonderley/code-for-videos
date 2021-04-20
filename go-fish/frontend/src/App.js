@@ -52,6 +52,8 @@ function Table({
 }) {
   const [selectedCard, setSelectedCard]
     = useState(undefined)
+  const [selectedHand, setSelectedHand]
+    = useState(undefined)
   return handData.map(
     (cardData, i) => {
       const isPlayerTurn = playerTurn === i
@@ -74,8 +76,7 @@ function Table({
         }}
         onHandSelected={() => {
           if (isPlayerTurn) return
-          console.log(
-            'selected another player\'s hand')
+          setSelectedHand(i)
         }}
       />
     })
