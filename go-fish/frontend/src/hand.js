@@ -4,6 +4,7 @@ export default function Hand(
   {
     name,
     isPlayerTurn,
+    isHandSelected,
     showCards,
     cardData,
     playerIdx,
@@ -28,6 +29,8 @@ export default function Hand(
     textDecoration: 'underline',
     textDecorationThickness: '4px',
   } : undefined
+  const border = isHandSelected ?
+    '8px solid orange' :  undefined
   return (
     <div
       onClick={onHandSelected}
@@ -35,9 +38,7 @@ export default function Hand(
         width: '100%',
         padding: 20,
         boxSizing: 'border-box',
-        // border: isPlayerTurn ?
-        //   '3px solid white' :
-        //   undefined,
+        border,
     }}>
       <span style={{
         color: 'white',
