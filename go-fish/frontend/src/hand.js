@@ -9,6 +9,7 @@ export default function Hand(
     playerIdx,
     selectedCardIdx,
     onCardSelected,
+    onHandSelected,
   }
 ) {
   const content = cardData.map(
@@ -28,13 +29,15 @@ export default function Hand(
     textDecorationThickness: '4px',
   } : undefined
   return (
-    <div style={{
-      width: '100%',
-      padding: 20,
-      boxSizing: 'border-box',
-      // border: isPlayerTurn ?
-      //   '3px solid white' :
-      //   undefined,
+    <div
+      onClick={onHandSelected}
+      style={{
+        width: '100%',
+        padding: 20,
+        boxSizing: 'border-box',
+        // border: isPlayerTurn ?
+        //   '3px solid white' :
+        //   undefined,
     }}>
       <span style={{
         color: 'white',
