@@ -23,6 +23,10 @@ export default function Hand(
       {...c}
     />
   )
+  const nameUnderline = isPlayerTurn ? {
+    textDecoration: 'underline',
+    textDecorationThickness: '4px',
+  } : undefined
   return (
     <div style={{
       width: '100%',
@@ -35,9 +39,7 @@ export default function Hand(
       <span style={{
         color: 'white',
         fontWeight: 'bold',
-        textDecoration: isPlayerTurn ?
-          'underline' :
-          undefined,
+        ...nameUnderline,
       }}>
         {name || ''}
       </span>
