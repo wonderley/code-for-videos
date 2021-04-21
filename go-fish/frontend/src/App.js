@@ -72,6 +72,11 @@ function Table({
             cardIdx,
           })
         }}
+        onHandSelected={() => {
+          if (isPlayerTurn) return
+          console.log(
+            'selected another player\'s hand')
+        }}
       />
     })
 }
