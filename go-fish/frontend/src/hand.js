@@ -30,13 +30,14 @@ export default function Hand(
     textDecorationThickness: '4px',
   } : undefined
   const border = isHandSelected ?
-    '8px solid orange' :  undefined
+    '8px solid orange' :
+    '8px solid transparent'
   return (
     <div
       onClick={onHandSelected}
       style={{
         width: '100%',
-        padding: 20,
+        padding: 10,
         boxSizing: 'border-box',
         border,
     }}>
