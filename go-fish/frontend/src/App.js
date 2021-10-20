@@ -57,6 +57,14 @@ function Table({
   return tableData.map(
     (handData, i) => {
       const isPlayerTurn = playerTurn === i
+      const requestedCardValue = selectedCard ?
+        tableData[selectedCard.playerIdx]
+          [selectedCard.cardIdx].value :
+        undefined
+      const requestedCardIdx = requestedCardValue ?
+        tableData[i]
+        .findIndex(c => c.value === requestedCardValue)
+      : undefined
       return <Hand
         name={`Player ${i+1}`}
         isPlayerTurn={isPlayerTurn}
@@ -82,6 +90,7 @@ function Table({
           if (!selectedCard) return
           setSelectedHand(i)
         }}
+        requestedCardIdx={requestedCardIdx}
       />
     })
 }
