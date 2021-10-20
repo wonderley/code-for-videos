@@ -11,17 +11,17 @@ export default function App() {
   const deck = shuffleDeck(unshuffledDeck)
   const numPlayers = 3
   const numCards = 5
-  const initialHandData =
+  const initialTableData =
     deal(deck, numPlayers, numCards)
-  const [handData] =
-    useState(initialHandData)
+  const [tableData] =
+    useState(initialTableData)
   const [playerTurn] =
     useState(0)
   return (
     <div className='App'>
       <header className='App-header'>
         <Table
-          handData={handData}
+          tableData={tableData}
           playerTurn={playerTurn}
         />
       </header>
@@ -47,21 +47,21 @@ function deal(deck, numPlayers, numCards) {
 }
 
 function Table({
-  handData,
+  tableData,
   playerTurn
 }) {
   const [selectedCard, setSelectedCard]
     = useState(undefined)
   const [selectedHand, setSelectedHand]
     = useState(undefined)
-  return handData.map(
-    (cardData, i) => {
+  return tableData.map(
+    (handData, i) => {
       const isPlayerTurn = playerTurn === i
       return <Hand
         name={`Player ${i+1}`}
         isPlayerTurn={isPlayerTurn}
         showCards={i === 0}
-        cardData={cardData}
+        handData={handData}
         selectedCardIdx={
           selectedCard &&
           selectedCard.playerIdx === i &&
