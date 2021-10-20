@@ -77,6 +77,9 @@ function Table({
         isHandSelected={i === selectedHand}
         onHandSelected={() => {
           if (isPlayerTurn) return
+          // You can only select a hand after
+          // selecting one of your own cards.
+          if (!selectedCard) return
           setSelectedHand(i)
         }}
       />
