@@ -17,8 +17,12 @@ export default function App() {
     useState(initialTableData)
   const [playerTurn] =
     useState(0)
+  const [gameFrozen, setGameFrozen]
+    = useState(true)
   return (
-    <div className='App'>
+    <div className='App' style={{
+      pointerEvents: gameFrozen ? 'none' : 'auto',
+    }}>
       <header className='App-header'>
         <Table
           tableData={tableData}
