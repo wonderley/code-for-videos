@@ -11,7 +11,7 @@ export default function Hand(
     selectedCardIdx,
     onCardSelected,
     onHandSelected,
-    requestedCardIdx,
+    hasTheRequestedCard,
   }
 ) {
   const content = handData.map(
@@ -30,9 +30,6 @@ export default function Hand(
     textDecoration: 'underline',
     textDecorationThickness: '4px',
   } : undefined
-  const hasTheRequestedCard =
-    requestedCardIdx !== undefined 
-    && requestedCardIdx !== -1
   const border = isHandSelected ?
     (hasTheRequestedCard ?
       '8px solid green' : '8px solid red')

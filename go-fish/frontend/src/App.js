@@ -69,6 +69,10 @@ function Table({
         tableData[i]
         .findIndex(c => c.value === requestedCardValue)
       : undefined
+      const isHandSelected = i === selectedHand
+      const hasTheRequestedCard =
+        requestedCardIdx !== undefined
+        && requestedCardIdx !== -1
       return <Hand
         name={`Player ${i+1}`}
         isPlayerTurn={isPlayerTurn}
@@ -86,7 +90,7 @@ function Table({
             cardIdx,
           })
         }}
-        isHandSelected={i === selectedHand}
+        isHandSelected={isHandSelected}
         onHandSelected={() => {
           if (isPlayerTurn) return
           // You can only select a hand after
@@ -95,6 +99,7 @@ function Table({
           setSelectedHand(i)
         }}
         requestedCardIdx={requestedCardIdx}
+        hasTheRequestedCard={hasTheRequestedCard}
       />
     })
 }
