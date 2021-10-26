@@ -18,7 +18,7 @@ export default function App() {
   const [playerTurn] =
     useState(0)
   const [gameFrozen, setGameFrozen]
-    = useState(true)
+    = useState(false)
   return (
     <div className='App' style={{
       pointerEvents: gameFrozen ? 'none' : 'auto',
@@ -27,6 +27,7 @@ export default function App() {
         <Table
           tableData={tableData}
           playerTurn={playerTurn}
+          setGameFrozen={setGameFrozen}
         />
       </header>
     </div>
@@ -52,7 +53,8 @@ function deal(deck, numPlayers, numCards) {
 
 function Table({
   tableData,
-  playerTurn
+  playerTurn,
+  setGameFrozen,
 }) {
   const [selectedCard, setSelectedCard]
     = useState(undefined)
@@ -73,6 +75,9 @@ function Table({
       const hasTheRequestedCard =
         requestedCardIdx !== undefined
         && requestedCardIdx !== -1
+      if (isHandSelected && hasTheRequestedCard) {
+        setGameFrozen(true)
+      }
       return <Hand
         name={`Player ${i+1}`}
         isPlayerTurn={isPlayerTurn}
