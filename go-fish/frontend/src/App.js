@@ -83,6 +83,7 @@ function Table({
         && requestedCardIdx !== -1
       if (isHandSelected && hasTheRequestedCard) {
         setGameFrozen(true)
+        handData[requestedCardIdx].faceUp = true
       }
       return <Hand
         name={`Player ${i+1}`}
