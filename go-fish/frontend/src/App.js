@@ -15,6 +15,12 @@ export default function App() {
     deal(deck, numPlayers, numCards)
   const [tableData] =
     useState(initialTableData)
+  // Show first player's cards
+  tableData.forEach((handData, i) => {
+    handData.forEach(cardData => {
+      cardData.faceUp = i === 0
+    })
+  })
   const [playerTurn] =
     useState(0)
   const [gameFrozen, setGameFrozen]
@@ -81,7 +87,6 @@ function Table({
       return <Hand
         name={`Player ${i+1}`}
         isPlayerTurn={isPlayerTurn}
-        showCards={i === 0}
         handData={handData}
         selectedCardIdx={
           selectedCard &&
