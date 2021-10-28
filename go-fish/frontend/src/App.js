@@ -15,58 +15,27 @@ export default function App() {
     deal(deck, numPlayers, numCards)
   const [tableData] =
     useState(initialTableData)
-  // Show first player's cards
-  tableData.forEach((handData, i) => {
-    handData.forEach(cardData => {
-      cardData.faceUp = i === 0
-    })
-  })
   const [playerTurn] =
     useState(0)
   const [gameFrozen, setGameFrozen]
     = useState(false)
-  return (
-    <div className='App' style={{
-      pointerEvents: gameFrozen ? 'none' : 'auto',
-    }}>
-      <header className='App-header'>
-        <Table
-          tableData={tableData}
-          playerTurn={playerTurn}
-          setGameFrozen={setGameFrozen}
-        />
-      </header>
-    </div>
-  )
-}
-
-function dealCard(deck, handData, playerIdx) {
-  const cardProps = deck.pop()
-  handData[playerIdx].push(cardProps)
-}
-
-function deal(deck, numPlayers, numCards) {
-  const handData = []
-  for (let i = 0; i < numPlayers; i++)
-    handData.push([])
-  for (let i = 0;
-  i < numPlayers*numCards;
-  i++) {
-    dealCard(deck, handData, i % numPlayers)
-  }
-  return handData
-}
-
-function Table({
-  tableData,
-  playerTurn,
-  setGameFrozen,
-}) {
   const [selectedCard, setSelectedCard]
     = useState(undefined)
   const [selectedHand, setSelectedHand]
     = useState(undefined)
-  return tableData.map(
+  const [shownCard, setShownCard]
+    = useState(undefined)
+  // Show first player's cards
+  tableData.forEach((handData, i) => {
+    handData.forEach(cardData => {
+      cardData.faceUp = i === playerTurn
+    })
+  })
+  if (shownCard) {
+    const { playerIdx, cardIdx } = shownCard
+    tableData[playerIdx][cardIdx].faceUp = true
+  }
+  const hands = tableData.map(
     (handData, i) => {
       const isPlayerTurn = playerTurn === i
       const requestedCardValue = selectedCard ?
@@ -81,9 +50,15 @@ function Table({
       const hasTheRequestedCard =
         requestedCardIdx !== undefined
         && requestedCardIdx !== -1
-      if (isHandSelected && hasTheRequestedCard) {
+      if (isHandSelected
+        && hasTheRequestedCard
+        && !gameFrozen) {
         setGameFrozen(true)
-        handData[requestedCardIdx].faceUp = true
+        // Show the matching card
+        setShownCard({
+          playerIdx: selectedHand,
+          cardIdx: requestedCardIdx,
+        })
       }
       return <Hand
         name={`Player ${i+1}`}
@@ -113,4 +88,30 @@ function Table({
         hasTheRequestedCard={hasTheRequestedCard}
       />
     })
+  return (
+    <div className='App' style={{
+      pointerEvents: gameFrozen ? 'none' : 'auto',
+    }}>
+      <header className='App-header'>
+        {hands}
+      </header>
+    </div>
+  )
+}
+
+function dealCard(deck, handData, playerIdx) {
+  const cardProps = deck.pop()
+  handData[playerIdx].push(cardProps)
+}
+
+function deal(deck, numPlayers, numCards) {
+  const handData = []
+  for (let i = 0; i < numPlayers; i++)
+    handData.push([])
+  for (let i = 0;
+  i < numPlayers*numCards;
+  i++) {
+    dealCard(deck, handData, i % numPlayers)
+  }
+  return handData
 }
