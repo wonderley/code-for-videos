@@ -1,3 +1,6 @@
 .DS_Store
 *.png
 *.xcf
+env
+.vscode
+__pycache__
