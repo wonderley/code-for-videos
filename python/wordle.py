@@ -10,9 +10,21 @@ def get_five_letter_words(words):
 
 words = get_five_letter_words(english_words_lower_alpha_set)
 
-secret_word_1 = random.choice(list(words))
-secret_word_2 = random.choice(list(words))
-secret_word_3 = random.choice(list(words))
-print(secret_word_1)
-print(secret_word_2)
-print(secret_word_3)
+secret_word = random.choice(list(words))
+
+print('~~WORDLE~~')
+print('Guess a five letter word.')
+print(f'The word is {secret_word}')
+n_guesses = 6
+guessed_word = False
+for i in range(n_guesses):
+    guess = input()
+    if guess == secret_word:
+        guessed_word = True
+        break
+    print(f"The word's not {guess}.")
+    print(f'You have {n_guesses-1-i} guesses left')
+if guessed_word:
+    print(f'You got it in {i+1} turns! 🏆')
+else:
+    print("Sorry, you didn't guess the word!")
