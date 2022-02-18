@@ -1,16 +1,16 @@
-# returns two lists:
-# one with correct-position matches
-# and another with incorrect-position matches
+# returns a list that represents the color for each position
+NONE = 0
+GREEN = 1
+YELLOW = 2
 def find_position_matches(target, guess):
     target_letters = set(target)
-    correct_position_matches = []
-    incorrect_position_matches = []
+    position_colors = [NONE] * len(target)
     for i, l in enumerate(guess):
         if target[i] == l:
-            correct_position_matches.append(i)
+            position_colors[i] = GREEN
         elif l in target_letters:
-            incorrect_position_matches.append(i)
-    return correct_position_matches, incorrect_position_matches
+            position_colors[i] = YELLOW
+    return position_colors
 
 if __name__ == '__main__':
     print('TARGET', 'GUESS')
