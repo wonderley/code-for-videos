@@ -8,8 +8,15 @@ def find_position_matches(target, guess):
     for i, l in enumerate(guess):
         if target[i] == l:
             position_colors[i] = GREEN
-        elif l in target_letters:
-            position_colors[i] = YELLOW
+            matched_target_indexes.add(i)
+    for gi, gl in enumerate(guess):
+        for ti, tl in enumerate(target):
+            if (ti in matched_target_indexes
+                or position_colors[gi] == GREEN):
+                continue
+            elif gl == tl:
+                position_colors[gi] = YELLOW
+                break
     return position_colors
 
 if __name__ == '__main__':
