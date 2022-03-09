@@ -3,7 +3,7 @@ NONE = 0
 GREEN = 1
 YELLOW = 2
 def find_position_matches(target, guess):
-    target_letters = set(target)
+    matched_target_indexes = set()
     position_colors = [NONE] * len(target)
     for i, l in enumerate(guess):
         if target[i] == l:
