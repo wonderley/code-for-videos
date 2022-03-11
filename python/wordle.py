@@ -1,5 +1,6 @@
 from english_words import english_words_lower_alpha_set
 import random
+import wordlematchalgo
 
 def get_five_letter_words(words):
     five_letter_words = set()
@@ -22,7 +23,8 @@ for i in range(n_guesses):
     if guess == secret_word:
         guessed_word = True
         break
-    print(f"The word's not {guess}.")
+    matches = wordlematchalgo.find_position_matches(secret_word, guess)
+    print(matches)
     print(f'You have {n_guesses-1-i} guesses left')
 if guessed_word:
     print(f'You got it in {i+1} turns! 🏆')
