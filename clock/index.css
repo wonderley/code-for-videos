@@ -1,3 +1,8 @@
+@font-face {
+    font-family: digitalClock;
+    src: url(digital-7.ttf);
+  }
+
 #container {
     display: flex;
     justify-content: center;
@@ -8,5 +13,6 @@
 
 #clock {
     font-size: 54;
+    font-family: digitalClock;
 }
 
