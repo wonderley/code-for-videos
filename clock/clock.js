@@ -8,6 +8,6 @@ function updateClock() {
 }
 
 window.onload = () => {
-    setInterval(updateClock)
+    // setInterval(updateClock)
 }
 

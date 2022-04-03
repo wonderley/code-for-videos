@@ -1,18 +1,18 @@
-@font-face {
-    font-family: digitalClock;
-    src: url(digital-7.ttf);
-  }
-
 #container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-
 }
 
 #clock {
-    font-size: 54;
-    font-family: digitalClock;
+    height: 20%;
+    display: grid;
+    grid-template-columns: 10px 50px 10px;
+    grid-template-rows: 10px 50px 10px 50px 10px;
+}
+
+.fill {
+    background-color: black;
 }
 
