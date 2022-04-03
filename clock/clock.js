@@ -8,6 +8,13 @@ function updateClock() {
 }
 
 window.onload = () => {
-    // setInterval(updateClock)
+    sevenSegments = [
+        document.getElementById('segment1'),
+        document.getElementById('segment3'),
+        document.getElementById('segment6'),
+    ]
+    for (segment of sevenSegments) {
+        segment.classList.add('fill')
+    }
 }
 
