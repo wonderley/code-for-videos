@@ -7,14 +7,42 @@ function updateClock() {
     clock.innerHTML = `${h}:${m}:${s}`
 }
 
-window.onload = () => {
-    sevenSegments = [
-        document.getElementById('segment1'),
-        document.getElementById('segment3'),
-        document.getElementById('segment6'),
-    ]
-    for (segment of sevenSegments) {
-        segment.classList.add('fill')
+function segmentsForDigit(digit) {
+    return {
+        0: [1,2,3,5,6,7],
+        1: [3,6],
+        2: [1,3,4,5,7],
+        3: [1,3,4,6,7],
+        4: [2,3,4,6],
+        5: [1,2,4,6,7],
+        6: [1,2,4,5,6,7],
+        7: [1,3,6],
+        8: [1,2,3,4,5,6,7],
+        9: [1,2,3,4,6,7],
+    }[digit]
+}
+
+function showDigit(digit) {
+    const segmentsToFill = segmentsForDigit(digit)
+    let segIndex = 0
+    for (let i = 1; i <= 7; i++) {
+        const segment = document
+            .getElementById(`segment${i}`)
+        if (segmentsToFill[segIndex] === i) {
+            segment.classList.add('fill')
+            segIndex++
+        } else {
+            segment.classList.remove('fill')
+        }
     }
+}
+
+window.onload = () => {
+    let digit = 0
+    showDigit(digit)
+    setInterval(() => {
+        digit = (digit + 1) % 10
+        showDigit(digit)
+    }, 1000)
 }
 
