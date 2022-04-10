@@ -1,10 +1,12 @@
 function updateClock() {
     const current = new Date()
     const clock = document.getElementById('clock')
-    const h = String(current.getHours()).padStart(2, '0')
-    const m = String(current.getMinutes()).padStart(2, '0')
-    const s = String(current.getSeconds()).padStart(2, '0')
-    clock.innerHTML = `${h}:${m}:${s}`
+    showDigit(Math.floor(current.getHours() / 10), 1)
+    showDigit(current.getHours() % 10, 2)
+    showDigit(Math.floor(current.getMinutes() / 10), 3)
+    showDigit(current.getMinutes() % 10, 4)
+    showDigit(Math.floor(current.getSeconds() / 10), 5)
+    showDigit(current.getSeconds() % 10, 6)
 }
 
 function segmentsForDigit(digit) {
@@ -22,12 +24,12 @@ function segmentsForDigit(digit) {
     }[digit]
 }
 
-function showDigit(digit) {
+function showDigit(digit, place) {
     const segmentsToFill = segmentsForDigit(digit)
     let segIndex = 0
     for (let i = 1; i <= 7; i++) {
         const segment = document
-            .getElementById(`segment${i}`)
+            .getElementById(`place${place}segment${i}`)
         if (segmentsToFill[segIndex] === i) {
             segment.classList.add('fill')
             segIndex++
@@ -38,11 +40,7 @@ function showDigit(digit) {
 }
 
 window.onload = () => {
-    let digit = 0
-    showDigit(digit)
-    setInterval(() => {
-        digit = (digit + 1) % 10
-        showDigit(digit)
-    }, 1000)
+    updateClock()
+    setInterval(updateClock, 1000)
 }
 

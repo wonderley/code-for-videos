@@ -5,11 +5,13 @@
     height: 100%;
 }
 
-#clock {
+.digit {
     height: 20%;
     display: grid;
     grid-template-columns: 10px 50px 10px;
     grid-template-rows: 10px 50px 10px 50px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .fill {
